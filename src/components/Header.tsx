@@ -64,11 +64,11 @@ const Header = () => {
           
           {/* Button section - takes up right space */}
           <div className="flex items-center gap-4 flex-1 justify-end">
-            <Button variant="outline" className="border-2 border-primary text-primary font-semibold px-6 rounded-xl transition-smooth hover:card-hover-shadow">
-              Sign In
+            <Button variant="outline" className="border-2 border-primary text-primary font-semibold px-6 rounded-xl transition-smooth hover:card-hover-shadow" asChild>
+              <a href="/signin">Sign In</a>
             </Button>
-            <Button className="primary-gradient text-white font-semibold px-6 rounded-lg transition-smooth hover:scale-105">
-              Get Started
+            <Button className="primary-gradient text-white font-semibold px-6 rounded-lg transition-smooth hover:scale-105" asChild>
+              <a href="/signup">Get Started</a>
             </Button>
           </div>
         </div>
