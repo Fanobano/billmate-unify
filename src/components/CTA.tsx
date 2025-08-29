@@ -23,7 +23,7 @@ const CTA = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-2 border-primary text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:card-hover-shadow"
+              className="border-2 border-primary text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:border-white hover:text-white"
             >
               Contact Sales
             </Button>
