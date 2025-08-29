@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-center">
                 One dashboard.{" "}
                 <span className="gradient-text">Every subscription.</span>{" "}
                 Zero surprises.
