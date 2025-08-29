@@ -14,9 +14,9 @@ const CTA = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              size="lg" 
-              variant="secondary"
-              className="bg-white text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105 hover:shadow-xl"
+              variant="outline" 
+              size="lg"
+              className="border-2 border-primary text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:border-white hover:text-white"
             >
               Start Your Free Trial
             </Button>
