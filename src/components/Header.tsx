@@ -15,16 +15,16 @@ const Header = () => {
           
           {/* Centered navigation */}
           <nav className="hidden md:flex items-center justify-center gap-8 flex-1">
-            <a href="#features" className="text-foreground hover:text-primary transition-smooth">
+            <a href="/features" className="text-foreground hover:text-primary transition-smooth">
               Features
             </a>
-            <a href="#pricing" className="text-foreground hover:text-primary transition-smooth">
+            <a href="/pricing" className="text-foreground hover:text-primary transition-smooth">
               Pricing
             </a>
-            <a href="#about" className="text-foreground hover:text-primary transition-smooth">
+            <a href="/about" className="text-foreground hover:text-primary transition-smooth">
               About
             </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-smooth">
+            <a href="/contact" className="text-foreground hover:text-primary transition-smooth">
               Contact
             </a>
           </nav>
