@@ -28,7 +28,7 @@ const Header = () => {
           </nav>
           
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-foreground hover:text-primary">
+            <Button variant="outline" className="border-2 border-primary text-primary font-semibold px-6 rounded-xl transition-smooth hover:card-hover-shadow">
               Sign In
             </Button>
             <Button className="primary-gradient text-white font-semibold px-6 rounded-lg transition-smooth hover:scale-105">
