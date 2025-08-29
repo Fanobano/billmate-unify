@@ -16,14 +16,14 @@ const CTA = () => {
             <Button 
               size="lg" 
               variant="secondary"
-              className="bg-white text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105 hover:shadow-xl"
+              className="bg-white text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:bg-secondary hover:text-primary hover:scale-105 hover:shadow-xl"
             >
               Start Your Free Trial
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-2 border-white text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:bg-white/10"
+              className="border-2 border-white text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:bg-secondary hover:text-primary"
             >
               Contact Sales
             </Button>
