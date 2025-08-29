@@ -19,7 +19,7 @@ const Pricing = () => {
         "Mobile app access"
       ],
       popular: false,
-      buttonText: "Get Started Free"
+      buttonText: "Start Free Trial"
     },
     {
       name: "Pro Plan",
