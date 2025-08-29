@@ -2,59 +2,92 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const SignIn = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-6 py-12">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 primary-gradient rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">B</span>
+    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 px-6 py-12 relative">
+      {/* Back Arrow */}
+      <Button 
+        variant="ghost" 
+        size="icon"
+        className="absolute top-6 left-6 hover:scale-110 transition-transform"
+        asChild
+      >
+        <a href="/">
+          <ArrowLeft className="h-5 w-5" />
+        </a>
+      </Button>
+
+      <div className="flex items-center justify-center min-h-screen">
+        <Card className="w-full max-w-md shadow-2xl border-0 bg-card/95 backdrop-blur-sm rounded-2xl">
+          <CardHeader className="text-center pb-8">
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 primary-gradient rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-3xl">B</span>
+              </div>
             </div>
-          </div>
-          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
-          <CardDescription>
-            Sign in to your BillMate account
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input 
-              id="email" 
-              type="email" 
-              placeholder="Enter your email"
-              className="w-full"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input 
-              id="password" 
-              type="password" 
-              placeholder="Enter your password"
-              className="w-full"
-            />
-          </div>
-          <div className="text-right">
-            <a href="#" className="text-sm text-primary hover:underline">
-              Forgot password?
-            </a>
-          </div>
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button className="w-full">
-            Sign In
-          </Button>
-          <p className="text-center text-sm text-muted-foreground">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-primary hover:underline font-medium">
-              Sign up
-            </a>
-          </p>
-        </CardFooter>
-      </Card>
+            <CardTitle className="text-3xl font-bold gradient-text mb-2">Welcome back</CardTitle>
+            <CardDescription className="text-base text-muted-foreground">
+              Sign in to your BillMate account to continue managing your bills
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6 px-8">
+            <div className="space-y-3">
+              <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="Enter your email address"
+                className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
+              />
+            </div>
+            <div className="space-y-3">
+              <Label htmlFor="password" className="text-sm font-medium">Password</Label>
+              <div className="relative">
+                <Input 
+                  id="password" 
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300 pr-12"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4 text-muted-foreground" />
+                  ) : (
+                    <Eye className="h-4 w-4 text-muted-foreground" />
+                  )}
+                </Button>
+              </div>
+            </div>
+            <div className="text-right">
+              <a href="#" className="text-sm text-primary hover:underline font-medium transition-colors">
+                Forgot your password?
+              </a>
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-6 px-8 pb-8">
+            <Button className="w-full h-12 rounded-xl primary-gradient text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              Sign In to Your Account
+            </Button>
+            <p className="text-center text-sm text-muted-foreground">
+              Don't have an account yet?{" "}
+              <a href="/signup" className="text-primary hover:underline font-semibold transition-colors">
+                Create one now
+              </a>
+            </p>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 };
