@@ -6,19 +6,19 @@ const Hero = () => {
     <section className="hero-bg min-h-screen flex items-center">
       <div className="container mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 text-center">
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-center">
-                One dashboard.{" "}
-                <span className="gradient-text">Every subscription.</span>{" "}
-                Zero surprises.
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <div>One dashboard.</div>
+                <div><span className="gradient-text">Every subscription.</span></div>
+                <div>Zero surprises.</div>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 Track all your recurring payments, get billing reminders, and cancel subscriptions in one place.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="primary-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105">
                 Start Free Trial
               </Button>
@@ -27,7 +27,7 @@ const Hero = () => {
               </Button>
             </div>
             
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 No credit card required
