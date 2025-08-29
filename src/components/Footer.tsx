@@ -18,36 +18,36 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Product</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Features</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Pricing</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">API</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Integrations</a>
+              <a href="/features" className="block text-muted-foreground hover:text-primary transition-smooth">Features</a>
+              <a href="/pricing" className="block text-muted-foreground hover:text-primary transition-smooth">Pricing</a>
+              <a href="/api" className="block text-muted-foreground hover:text-primary transition-smooth">API</a>
+              <a href="/integrations" className="block text-muted-foreground hover:text-primary transition-smooth">Integrations</a>
             </div>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Company</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">About</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Blog</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Careers</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Contact</a>
+              <a href="/about" className="block text-muted-foreground hover:text-primary transition-smooth">About</a>
+              <a href="/blog" className="block text-muted-foreground hover:text-primary transition-smooth">Blog</a>
+              <a href="/careers" className="block text-muted-foreground hover:text-primary transition-smooth">Careers</a>
+              <a href="/contact" className="block text-muted-foreground hover:text-primary transition-smooth">Contact</a>
             </div>
           </div>
           
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Support</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Help Center</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Privacy</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Terms</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-smooth">Status</a>
+              <a href="/help-center" className="block text-muted-foreground hover:text-primary transition-smooth">Help Center</a>
+              <a href="/privacy" className="block text-muted-foreground hover:text-primary transition-smooth">Privacy</a>
+              <a href="/terms" className="block text-muted-foreground hover:text-primary transition-smooth">Terms</a>
+              <a href="/status" className="block text-muted-foreground hover:text-primary transition-smooth">Status</a>
             </div>
           </div>
         </div>
         
         <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 BillMate. All rights reserved.</p>
+          <p>&copy; 2025 BillMate. All rights reserved.</p>
         </div>
       </div>
     </footer>
