@@ -48,27 +48,27 @@ const Dashboard = () => {
           <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto card-gradient-bg p-2 rounded-2xl shadow-lg border-0">
             <TabsTrigger 
               value="dashboard" 
-              className="rounded-xl transition-smooth data-[state=active]:primary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
+              className="rounded-xl transition-smooth py-3 data-[state=active]:primary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               Dashboard
             </TabsTrigger>
             <TabsTrigger 
               value="calendar"
-              className="rounded-xl transition-smooth data-[state=active]:accent-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
+              className="rounded-xl transition-smooth py-3 data-[state=active]:accent-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <CalendarIcon className="h-4 w-4 mr-2" />
               Calendar
             </TabsTrigger>
             <TabsTrigger 
               value="insights"
-              className="rounded-xl transition-smooth data-[state=active]:success-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
+              className="rounded-xl transition-smooth py-3 data-[state=active]:success-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <BarChart3 className="h-4 w-4 mr-2" />
               Insights
             </TabsTrigger>
             <TabsTrigger 
               value="settings"
-              className="rounded-xl transition-smooth data-[state=active]:secondary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
+              className="rounded-xl transition-smooth py-3 data-[state=active]:secondary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Settings className="h-4 w-4 mr-2" />
               Settings

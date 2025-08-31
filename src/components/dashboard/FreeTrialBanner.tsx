@@ -9,9 +9,9 @@ interface FreeTrialBannerProps {
 }
 
 const FreeTrialBanner: React.FC<FreeTrialBannerProps> = ({ onDismiss }) => {
-  // Mock trial start date (7 days ago for demo purposes - in real app this would come from user data)
+  // Mock trial start date - set to expired for demo
   const trialStartDate = new Date();
-  trialStartDate.setDate(trialStartDate.getDate() - 2); // 2 days into trial
+  trialStartDate.setDate(trialStartDate.getDate() - 7); // Trial expired
   
   const trialEndDate = new Date(trialStartDate);
   trialEndDate.setDate(trialEndDate.getDate() + 7);
