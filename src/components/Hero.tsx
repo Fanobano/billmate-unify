@@ -19,7 +19,11 @@ const Hero = () => {
             </div>
             
             <div className="flex justify-center">
-              <Button size="lg" className="primary-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105">
+              <Button 
+                size="lg" 
+                className="primary-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105"
+                onClick={() => window.location.href = '/dashboard'}
+              >
                 Start Free Trial
               </Button>
             </div>
