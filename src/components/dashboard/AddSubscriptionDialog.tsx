@@ -52,7 +52,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState<DialogStep>('select-service');
   const [selectedService, setSelectedService] = useState<SubscriptionService | null>(null);
-  const [accountData, setAccountData] = useState({ email: '', accountName: '' });
+  const [accountData, setAccountData] = useState({ email: '', accountName: '', reminderDays: '3' });
   const [connectedData, setConnectedData] = useState<any>(null);
 
   const form = useForm({
@@ -86,7 +86,8 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
         currentPlan: selectedService?.name === 'Netflix' ? 'Premium' : 'Pro',
         monthlyPrice: selectedService?.averagePrice || 0,
         nextBillingDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        status: 'Active'
+        status: 'Active',
+        reminderDays: parseInt(accountData.reminderDays)
       };
       setConnectedData(mockData);
       setCurrentStep('confirm');
@@ -102,7 +103,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
     // Reset state
     setCurrentStep('select-service');
     setSelectedService(null);
-    setAccountData({ email: '', accountName: '' });
+    setAccountData({ email: '', accountName: '', reminderDays: '3' });
     setConnectedData(null);
     form.reset();
     onOpenChange(false);
@@ -121,7 +122,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
   const handleDialogClose = () => {
     setCurrentStep('select-service');
     setSelectedService(null);
-    setAccountData({ email: '', accountName: '' });
+    setAccountData({ email: '', accountName: '', reminderDays: '3' });
     setConnectedData(null);
     form.reset();
     onOpenChange(false);
@@ -211,6 +212,21 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
                     onChange={(e) => setAccountData(prev => ({ ...prev, accountName: e.target.value }))}
                   />
                 </div>
+                <div>
+                  <Label htmlFor="reminderDays">Reminder (days before due)</Label>
+                  <Input
+                    id="reminderDays"
+                    type="number"
+                    min="1"
+                    max="30"
+                    placeholder="3"
+                    value={accountData.reminderDays}
+                    onChange={(e) => setAccountData(prev => ({ ...prev, reminderDays: e.target.value }))}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    You'll receive a reminder {accountData.reminderDays || '3'} day{(accountData.reminderDays && parseInt(accountData.reminderDays) !== 1) ? 's' : ''} before your subscription renews.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -293,6 +309,10 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
                     <Badge variant="secondary" className="text-green-600 bg-green-100">
                       {connectedData.status}
                     </Badge>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Reminder:</span>
+                    <p className="font-medium">{connectedData.reminderDays} day{connectedData.reminderDays !== 1 ? 's' : ''} before</p>
                   </div>
                 </div>
               </div>
