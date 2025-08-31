@@ -44,6 +44,54 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
+        {/* Custom Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 card-gradient-bg p-3 rounded-2xl shadow-lg border-0">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'dashboard'
+                  ? 'primary-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab('calendar')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'calendar'
+                  ? 'accent-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
+            >
+              <CalendarIcon className="h-4 w-4" />
+              Calendar
+            </button>
+            <button
+              onClick={() => setActiveTab('insights')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'insights'
+                  ? 'success-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
+            >
+              <BarChart3 className="h-4 w-4" />
+              Insights
+            </button>
+            <button
+              onClick={() => setActiveTab('settings')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'settings'
+                  ? 'secondary-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
+            >
+              <Settings className="h-4 w-4" />
+              Settings
+            </button>
+          </div>
+        </div>
 
         {/* Content Based on Active Tab */}
         {activeTab === 'dashboard' && (
