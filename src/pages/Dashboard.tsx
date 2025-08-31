@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Calendar as CalendarIcon, BarChart3, Settings } from "lucide-react";
 import SubscriptionList from "@/components/dashboard/SubscriptionList";
 import AddSubscriptionDialog from "@/components/dashboard/AddSubscriptionDialog";
@@ -13,6 +12,7 @@ import FreeTrialBanner from "@/components/dashboard/FreeTrialBanner";
 const Dashboard = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [showTrialBanner, setShowTrialBanner] = useState(true);
+  const [activeTab, setActiveTab] = useState('dashboard');
   
   return (
     <div className="min-h-screen dashboard-bg">
@@ -44,39 +44,58 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
-        <Tabs defaultValue="dashboard" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto card-gradient-bg p-3 pb-4 rounded-2xl shadow-lg border-0">
-            <TabsTrigger 
-              value="dashboard" 
-              className="rounded-xl transition-all duration-300 ease-out py-3 px-4 text-sm font-medium hover:bg-white/20 hover:scale-105 data-[state=active]:primary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105"
+        {/* Custom Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 card-gradient-bg p-3 rounded-2xl shadow-lg border-0">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'dashboard'
+                  ? 'primary-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
             >
               Dashboard
-            </TabsTrigger>
-            <TabsTrigger 
-              value="calendar"
-              className="rounded-xl transition-all duration-300 ease-out py-3 px-4 text-sm font-medium hover:bg-white/20 hover:scale-105 data-[state=active]:accent-gradient data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105"
+            </button>
+            <button
+              onClick={() => setActiveTab('calendar')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'calendar'
+                  ? 'accent-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
             >
-              <CalendarIcon className="h-4 w-4 mr-2" />
+              <CalendarIcon className="h-4 w-4" />
               Calendar
-            </TabsTrigger>
-            <TabsTrigger 
-              value="insights"
-              className="rounded-xl transition-all duration-300 ease-out py-3 px-4 text-sm font-medium hover:bg-white/20 hover:scale-105 data-[state=active]:success-gradient data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105"
+            </button>
+            <button
+              onClick={() => setActiveTab('insights')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'insights'
+                  ? 'success-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
             >
-              <BarChart3 className="h-4 w-4 mr-2" />
+              <BarChart3 className="h-4 w-4" />
               Insights
-            </TabsTrigger>
-            <TabsTrigger 
-              value="settings"
-              className="rounded-xl transition-all duration-300 ease-out py-3 px-4 text-sm font-medium hover:bg-white/20 hover:scale-105 data-[state=active]:secondary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105"
+            </button>
+            <button
+              onClick={() => setActiveTab('settings')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-out hover:scale-105 ${
+                activeTab === 'settings'
+                  ? 'secondary-gradient text-white shadow-lg scale-105'
+                  : 'text-muted-foreground hover:bg-white/20 hover:text-foreground'
+              }`}
             >
-              <Settings className="h-4 w-4 mr-2" />
+              <Settings className="h-4 w-4" />
               Settings
-            </TabsTrigger>
-          </TabsList>
+            </button>
+          </div>
+        </div>
 
-          {/* Dashboard Tab */}
-          <TabsContent value="dashboard" className="space-y-8">
+        {/* Content Based on Active Tab */}
+        {activeTab === 'dashboard' && (
+          <div className="space-y-8">
             <div className="grid gap-8 md:grid-cols-3">
               <Card className="interactive-card card-gradient-bg border-0 shadow-lg">
                 <CardHeader className="pb-2">
@@ -122,59 +141,56 @@ const Dashboard = () => {
             </div>
             
             <SubscriptionList />
-          </TabsContent>
+          </div>
+        )}
 
-          {/* Calendar Tab */}
-          <TabsContent value="calendar">
-            <Card className="card-gradient-bg border-0 shadow-xl">
-              <CardHeader className="accent-gradient text-white rounded-t-lg">
-                <CardTitle className="text-2xl">Subscription Calendar</CardTitle>
-                <CardDescription className="text-white/90">View all your subscription renewal dates at a glance</CardDescription>
+        {activeTab === 'calendar' && (
+          <Card className="card-gradient-bg border-0 shadow-xl">
+            <CardHeader className="accent-gradient text-white rounded-t-lg">
+              <CardTitle className="text-2xl">Subscription Calendar</CardTitle>
+              <CardDescription className="text-white/90">View all your subscription renewal dates at a glance</CardDescription>
+            </CardHeader>
+            <CardContent className="p-8">
+              <SubscriptionCalendar />
+            </CardContent>
+          </Card>
+        )}
+
+        {activeTab === 'insights' && (
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card className="interactive-card card-gradient-bg border-0 shadow-xl">
+              <CardHeader className="success-gradient text-white rounded-t-lg">
+                <CardTitle className="text-xl">Monthly Spending Trend</CardTitle>
+                <CardDescription className="text-white/90">Track your subscription costs over time</CardDescription>
               </CardHeader>
-              <CardContent className="p-8">
-                <SubscriptionCalendar />
+              <CardContent className="p-6">
+                <InsightsChart type="monthly" />
               </CardContent>
             </Card>
-          </TabsContent>
-
-          {/* Insights Tab */}
-          <TabsContent value="insights">
-            <div className="grid gap-8 md:grid-cols-2">
-              <Card className="interactive-card card-gradient-bg border-0 shadow-xl">
-                <CardHeader className="success-gradient text-white rounded-t-lg">
-                  <CardTitle className="text-xl">Monthly Spending Trend</CardTitle>
-                  <CardDescription className="text-white/90">Track your subscription costs over time</CardDescription>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <InsightsChart type="monthly" />
-                </CardContent>
-              </Card>
-              
-              <Card className="interactive-card card-gradient-bg border-0 shadow-xl">
-                <CardHeader className="secondary-gradient text-white rounded-t-lg">
-                  <CardTitle className="text-xl">Spending by Category</CardTitle>
-                  <CardDescription className="text-white/90">See where your money goes</CardDescription>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <InsightsChart type="category" />
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          {/* Settings Tab */}
-          <TabsContent value="settings">
-            <Card className="card-gradient-bg border-0 shadow-xl">
-              <CardHeader className="primary-gradient text-white rounded-t-lg">
-                <CardTitle className="text-2xl">Notification Settings</CardTitle>
-                <CardDescription className="text-white/90">Manage your reminder preferences</CardDescription>
+            
+            <Card className="interactive-card card-gradient-bg border-0 shadow-xl">
+              <CardHeader className="secondary-gradient text-white rounded-t-lg">
+                <CardTitle className="text-xl">Spending by Category</CardTitle>
+                <CardDescription className="text-white/90">See where your money goes</CardDescription>
               </CardHeader>
-              <CardContent className="p-8">
-                <ReminderSettings />
+              <CardContent className="p-6">
+                <InsightsChart type="category" />
               </CardContent>
             </Card>
-          </TabsContent>
-        </Tabs>
+          </div>
+        )}
+
+        {activeTab === 'settings' && (
+          <Card className="card-gradient-bg border-0 shadow-xl">
+            <CardHeader className="primary-gradient text-white rounded-t-lg">
+              <CardTitle className="text-2xl">Notification Settings</CardTitle>
+              <CardDescription className="text-white/90">Manage your reminder preferences</CardDescription>
+            </CardHeader>
+            <CardContent className="p-8">
+              <ReminderSettings />
+            </CardContent>
+          </Card>
+        )}
       </main>
 
       <AddSubscriptionDialog 
