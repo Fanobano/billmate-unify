@@ -18,12 +18,9 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button size="lg" className="primary-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105">
                 Start Free Trial
-              </Button>
-              <Button variant="outline" size="lg" className="border-2 border-primary text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:card-hover-shadow">
-                View Demo
               </Button>
             </div>
             
