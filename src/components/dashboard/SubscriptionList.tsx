@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { MoreVertical, Trash2, Edit, ExternalLink } from "lucide-react";
+import { MoreVertical, Trash2, Edit, ExternalLink, Bell } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import EditSubscriptionDialog from "./EditSubscriptionDialog";
 
 interface Subscription {
   id: string;
@@ -14,6 +15,7 @@ interface Subscription {
   renewalDate: Date;
   category: string;
   status: "active" | "cancelled" | "paused";
+  reminderDays?: number;
 }
 
 const mockSubscriptions: Subscription[] = [
@@ -24,7 +26,8 @@ const mockSubscriptions: Subscription[] = [
     price: 15.99,
     renewalDate: new Date(2024, 8, 15),
     category: "Entertainment",
-    status: "active"
+    status: "active",
+    reminderDays: 3
   },
   {
     id: "2",
@@ -33,7 +36,8 @@ const mockSubscriptions: Subscription[] = [
     price: 9.99,
     renewalDate: new Date(2024, 8, 20),
     category: "Music",
-    status: "active"
+    status: "active",
+    reminderDays: 7
   },
   {
     id: "3",
@@ -42,7 +46,8 @@ const mockSubscriptions: Subscription[] = [
     price: 52.99,
     renewalDate: new Date(2024, 8, 28),
     category: "Software",
-    status: "active"
+    status: "active",
+    reminderDays: 14
   },
   {
     id: "4",
@@ -51,12 +56,15 @@ const mockSubscriptions: Subscription[] = [
     price: 4.00,
     renewalDate: new Date(2024, 9, 5),
     category: "Development",
-    status: "active"
+    status: "active",
+    reminderDays: 1
   }
 ];
 
 const SubscriptionList = () => {
   const [subscriptions, setSubscriptions] = useState(mockSubscriptions);
+  const [editingSubscription, setEditingSubscription] = useState<Subscription | null>(null);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-US", { 
@@ -84,6 +92,27 @@ const SubscriptionList = () => {
 
   const handleCancelSubscription = (id: string) => {
     setSubscriptions(subs => subs.filter(sub => sub.id !== id));
+  };
+
+  const handleEditSubscription = (subscription: Subscription) => {
+    setEditingSubscription(subscription);
+    setIsEditDialogOpen(true);
+  };
+
+  const handleUpdateSubscription = (updatedSubscription: Subscription) => {
+    setSubscriptions(subs => 
+      subs.map(sub => 
+        sub.id === updatedSubscription.id ? updatedSubscription : sub
+      )
+    );
+  };
+
+  const getReminderText = (reminderDays?: number) => {
+    if (!reminderDays) return "No reminder set";
+    if (reminderDays === 1) return "1 day before";
+    if (reminderDays === 7) return "1 week before";
+    if (reminderDays === 14) return "2 weeks before";
+    return `${reminderDays} days before`;
   };
 
   return (
@@ -118,7 +147,10 @@ const SubscriptionList = () => {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem className="gap-2">
+                      <DropdownMenuItem 
+                        className="gap-2"
+                        onClick={() => handleEditSubscription(sub)}
+                      >
                         <Edit className="h-4 w-4" />
                         Edit
                       </DropdownMenuItem>
@@ -174,6 +206,10 @@ const SubscriptionList = () => {
                     <div>
                       {daysUntil > 0 ? `In ${daysUntil} days` : 'Payment due today'}
                     </div>
+                    <div className="flex items-center gap-1 mt-1">
+                      <Bell className="h-3 w-3" />
+                      <span className="text-xs">{getReminderText(sub.reminderDays)}</span>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -181,6 +217,13 @@ const SubscriptionList = () => {
           );
         })}
       </div>
+
+      <EditSubscriptionDialog 
+        open={isEditDialogOpen}
+        onOpenChange={setIsEditDialogOpen}
+        subscription={editingSubscription}
+        onUpdate={handleUpdateSubscription}
+      />
     </div>
   );
 };

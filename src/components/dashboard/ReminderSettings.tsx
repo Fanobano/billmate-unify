@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Bell, Mail, Phone } from "lucide-react";
@@ -11,7 +10,6 @@ interface NotificationSettings {
   emailNotifications: boolean;
   pushNotifications: boolean;
   smsNotifications: boolean;
-  reminderDays: string;
   dailyDigest: boolean;
   weeklyReport: boolean;
 }
@@ -22,7 +20,6 @@ const ReminderSettings = () => {
     emailNotifications: true,
     pushNotifications: true,
     smsNotifications: false,
-    reminderDays: "3",
     dailyDigest: false,
     weeklyReport: true,
   });
@@ -86,35 +83,6 @@ const ReminderSettings = () => {
               checked={settings.smsNotifications}
               onCheckedChange={(checked) => updateSetting('smsNotifications', checked)}
             />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Reminder Timing */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Reminder Timing</CardTitle>
-          <CardDescription>
-            Set when you want to be reminded about upcoming payments
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <Label htmlFor="reminder-days">Remind me</Label>
-            <Select
-              value={settings.reminderDays}
-              onValueChange={(value) => updateSetting('reminderDays', value)}
-            >
-              <SelectTrigger className="w-40">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1">1 day before</SelectItem>
-                <SelectItem value="3">3 days before</SelectItem>
-                <SelectItem value="7">1 week before</SelectItem>
-                <SelectItem value="14">2 weeks before</SelectItem>
-              </SelectContent>
-            </Select>
           </div>
         </CardContent>
       </Card>
