@@ -36,16 +36,33 @@ All colors MUST be HSL.
     --input: 220 13% 91%;
     --ring: 225 73% 57%;
 
-    /* Custom BillMate Design Tokens */
+    /* Enhanced BillMate Design Tokens */
     --primary-gradient: linear-gradient(135deg, hsl(225 73% 57%), hsl(250 100% 65%));
+    --secondary-gradient: linear-gradient(135deg, hsl(280 100% 70%), hsl(320 100% 75%));
+    --success-gradient: linear-gradient(135deg, hsl(120 60% 50%), hsl(150 60% 45%));
+    --warning-gradient: linear-gradient(135deg, hsl(45 100% 60%), hsl(35 100% 55%));
     --hero-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(225 73% 97%) 100%);
-    --card-hover: 0 10px 30px -10px hsl(225 73% 57% / 0.1);
+    --dashboard-gradient: linear-gradient(135deg, hsl(225 73% 97%) 0%, hsl(280 100% 98%) 50%, hsl(320 100% 97%) 100%);
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(225 73% 98%) 100%);
     --feature-gradient: linear-gradient(135deg, hsl(225 73% 97%) 0%, hsl(0 0% 100%) 100%);
     --text-gradient: linear-gradient(135deg, hsl(225 73% 57%), hsl(250 100% 65%));
+    --accent-gradient: linear-gradient(135deg, hsl(180 100% 45%), hsl(200 100% 50%));
+    
+    /* Shadows and Effects */
+    --card-hover: 0 10px 30px -10px hsl(225 73% 57% / 0.1);
+    --card-glow: 0 0 40px hsl(225 73% 57% / 0.15);
+    --primary-shadow: 0 10px 25px -5px hsl(225 73% 57% / 0.25);
+    --success-shadow: 0 10px 25px -5px hsl(120 60% 50% / 0.25);
+    --warning-shadow: 0 10px 25px -5px hsl(45 100% 60% / 0.25);
+    
+    /* Interactive States */
+    --hover-scale: 1.02;
+    --active-scale: 0.98;
     
     /* Typography */
     --font-display: 'Inter', system-ui, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -117,6 +134,7 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Text Effects */
   .gradient-text {
     background: var(--text-gradient);
     -webkit-background-clip: text;
@@ -124,23 +142,123 @@ All colors MUST be HSL.
     background-clip: text;
   }
   
+  /* Background Gradients */
   .hero-bg {
     background: var(--hero-gradient);
+  }
+  
+  .dashboard-bg {
+    background: var(--dashboard-gradient);
   }
   
   .feature-card-bg {
     background: var(--feature-gradient);
   }
   
+  .card-gradient-bg {
+    background: var(--card-gradient);
+  }
+  
   .primary-gradient {
     background: var(--primary-gradient);
   }
   
+  .secondary-gradient {
+    background: var(--secondary-gradient);
+  }
+  
+  .success-gradient {
+    background: var(--success-gradient);
+  }
+  
+  .warning-gradient {
+    background: var(--warning-gradient);
+  }
+  
+  .accent-gradient {
+    background: var(--accent-gradient);
+  }
+  
+  /* Shadows and Effects */
   .card-hover-shadow {
     box-shadow: var(--card-hover);
   }
   
+  .card-glow {
+    box-shadow: var(--card-glow);
+  }
+  
+  .primary-shadow {
+    box-shadow: var(--primary-shadow);
+  }
+  
+  .success-shadow {
+    box-shadow: var(--success-shadow);
+  }
+  
+  .warning-shadow {
+    box-shadow: var(--warning-shadow);
+  }
+  
+  /* Transitions */
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  /* Interactive Effects */
+  .hover-lift:hover {
+    transform: translateY(-2px) scale(var(--hover-scale));
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--card-glow);
+  }
+  
+  .interactive-card {
+    @apply transition-smooth hover-lift hover-glow;
+  }
+  
+  /* Glass Effect */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Animated Gradients */
+  .animated-gradient {
+    background: linear-gradient(-45deg, hsl(225 73% 57%), hsl(250 100% 65%), hsl(280 100% 70%), hsl(320 100% 75%));
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Pulse Animation */
+  .pulse-soft {
+    animation: pulseSoft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulseSoft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 }

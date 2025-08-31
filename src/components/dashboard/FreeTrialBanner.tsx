@@ -72,20 +72,20 @@ const FreeTrialBanner: React.FC<FreeTrialBannerProps> = ({ onDismiss }) => {
   }
 
   return (
-    <Card className={`${isExpiringSoon ? 'bg-yellow-50 border-yellow-200 dark:bg-yellow-950/20 dark:border-yellow-800' : 'bg-primary/5 border-primary/20'}`}>
-      <CardContent className="p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Crown className={`h-5 w-5 ${isExpiringSoon ? 'text-yellow-600' : 'text-primary'}`} />
-              <Badge variant={isExpiringSoon ? "destructive" : "secondary"}>
-                Free Trial
-              </Badge>
-            </div>
+    <Card className={`${isExpiringSoon ? 'animated-gradient' : 'primary-gradient'} border-0 shadow-xl text-white`}>
+      <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Crown className="h-6 w-6 text-white" />
+                <Badge className="bg-white/20 text-white border-white/30 hover:bg-white/30">
+                  Free Trial
+                </Badge>
+              </div>
             
             <div className="hidden sm:flex items-center gap-1 text-sm">
-              <Clock className="h-4 w-4" />
-              <span className="font-medium">
+              <Clock className="h-4 w-4 text-white" />
+              <span className="font-medium text-white">
                 {timeLeft.days > 0 && `${timeLeft.days}d `}
                 {String(timeLeft.hours).padStart(2, '0')}:
                 {String(timeLeft.minutes).padStart(2, '0')}:
@@ -96,11 +96,11 @@ const FreeTrialBanner: React.FC<FreeTrialBannerProps> = ({ onDismiss }) => {
 
           <div className="flex items-center gap-3">
             {/* Mobile countdown */}
-            <div className="sm:hidden text-sm font-medium">
+            <div className="sm:hidden text-sm font-medium text-white">
               {timeLeft.days > 0 ? `${timeLeft.days} days left` : `${timeLeft.hours}h ${timeLeft.minutes}m left`}
             </div>
             
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
+            <Button size="sm" className="bg-white text-primary hover:bg-white/90 font-semibold transition-smooth hover-lift">
               Upgrade to Pro
             </Button>
             
@@ -118,18 +118,16 @@ const FreeTrialBanner: React.FC<FreeTrialBannerProps> = ({ onDismiss }) => {
         </div>
         
         {/* Progress bar */}
-        <div className="mt-3">
-          <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+        <div className="mt-4">
+          <div className="w-full bg-white/20 rounded-full h-3">
             <div 
-              className={`h-2 rounded-full transition-all duration-500 ${
-                isExpiringSoon ? 'bg-yellow-500' : 'bg-primary'
-              }`}
+              className="h-3 rounded-full transition-all duration-500 bg-white shadow-lg"
               style={{ 
                 width: `${Math.max(0, Math.min(100, (totalTimeLeft / (7 * 24 * 60 * 60)) * 100))}%` 
               }}
             />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground mt-1">
+          <div className="flex justify-between text-xs text-white/80 mt-2">
             <span>Trial started</span>
             <span>{timeLeft.days > 0 ? `${timeLeft.days} days remaining` : 'Expires soon'}</span>
           </div>

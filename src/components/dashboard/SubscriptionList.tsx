@@ -74,12 +74,12 @@ const SubscriptionList = () => {
 
   const getStatusBadge = (status: string, daysUntil: number) => {
     if (daysUntil <= 3) {
-      return <Badge variant="destructive">Due Soon</Badge>;
+      return <Badge className="warning-gradient text-white pulse-soft">Due Soon</Badge>;
     }
     if (daysUntil <= 7) {
-      return <Badge className="bg-yellow-500">Due This Week</Badge>;
+      return <Badge className="secondary-gradient text-white">Due This Week</Badge>;
     }
-    return <Badge variant="secondary">Active</Badge>;
+    return <Badge className="success-gradient text-white">Active</Badge>;
   };
 
   const handleCancelSubscription = (id: string) => {
@@ -95,12 +95,12 @@ const SubscriptionList = () => {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {subscriptions.map((sub) => {
           const daysUntil = getDaysUntilRenewal(sub.renewalDate);
           
           return (
-            <Card key={sub.id} className="hover:shadow-lg transition-shadow">
+            <Card key={sub.id} className="interactive-card card-gradient-bg border-0 shadow-lg">
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
