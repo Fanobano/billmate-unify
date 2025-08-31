@@ -45,7 +45,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
         <Tabs defaultValue="dashboard" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto card-gradient-bg p-2 rounded-2xl shadow-lg border-0">
+          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto card-gradient-bg p-2 pb-4 rounded-2xl shadow-lg border-0">
             <TabsTrigger 
               value="dashboard" 
               className="rounded-xl transition-smooth py-3 data-[state=active]:primary-gradient data-[state=active]:text-white data-[state=active]:shadow-lg"
