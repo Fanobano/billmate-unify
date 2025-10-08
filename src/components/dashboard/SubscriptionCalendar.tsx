@@ -15,21 +15,21 @@ interface SubscriptionEvent {
 const mockEvents: SubscriptionEvent[] = [
   {
     date: new Date(2024, 8, 15),
-    subscriptions: [{ name: "Netflix", price: 15.99, logo: "🎬" }]
+    subscriptions: [{ name: "Netflix", price: 250000, logo: "🎬" }]
   },
   {
     date: new Date(2024, 8, 20),
-    subscriptions: [{ name: "Spotify Premium", price: 9.99, logo: "🎵" }]
+    subscriptions: [{ name: "Spotify Premium", price: 150000, logo: "🎵" }]
   },
   {
     date: new Date(2024, 8, 28),
-    subscriptions: [{ name: "Adobe Creative Suite", price: 52.99, logo: "🎨" }]
+    subscriptions: [{ name: "Adobe Creative Suite", price: 850000, logo: "🎨" }]
   },
   {
     date: new Date(2024, 9, 5),
     subscriptions: [
-      { name: "GitHub Pro", price: 4.00, logo: "💻" },
-      { name: "Dropbox Plus", price: 9.99, logo: "☁️" }
+      { name: "GitHub Pro", price: 60000, logo: "💻" },
+      { name: "Dropbox Plus", price: 150000, logo: "☁️" }
     ]
   },
 ];
@@ -97,7 +97,7 @@ const SubscriptionCalendar = () => {
                       </div>
                     </div>
                     <Badge variant="outline" className="text-lg font-semibold">
-                      ${sub.price}
+                      Rp{sub.price.toLocaleString('id-ID')}
                     </Badge>
                   </div>
                 </CardContent>
@@ -108,7 +108,7 @@ const SubscriptionCalendar = () => {
               <div className="flex justify-between items-center">
                 <span className="font-medium">Total for this day:</span>
                 <span className="text-lg font-bold text-primary">
-                  ${selectedEvent.subscriptions.reduce((sum, sub) => sum + sub.price, 0).toFixed(2)}
+                  Rp{selectedEvent.subscriptions.reduce((sum, sub) => sum + sub.price, 0).toLocaleString('id-ID')}
                 </span>
               </div>
             </div>

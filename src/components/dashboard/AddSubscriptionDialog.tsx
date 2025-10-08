@@ -29,18 +29,18 @@ interface SubscriptionService {
 }
 
 const popularServices: SubscriptionService[] = [
-  { id: 'netflix', name: 'Netflix', icon: Play, color: 'bg-red-500', category: 'Entertainment', averagePrice: 15.49, description: 'Streaming movies and TV shows' },
-  { id: 'spotify', name: 'Spotify', icon: Music, color: 'bg-green-500', category: 'Music', averagePrice: 9.99, description: 'Music streaming service' },
-  { id: 'adobe', name: 'Adobe Creative', icon: Camera, color: 'bg-red-600', category: 'Software', averagePrice: 52.99, description: 'Creative design tools' },
-  { id: 'github', name: 'GitHub Pro', icon: Code, color: 'bg-gray-800', category: 'Development', averagePrice: 4.00, description: 'Code repository hosting' },
-  { id: 'notion', name: 'Notion', icon: FileText, color: 'bg-gray-700', category: 'Productivity', averagePrice: 8.00, description: 'All-in-one workspace' },
-  { id: 'disney', name: 'Disney+', icon: Play, color: 'bg-blue-600', category: 'Entertainment', averagePrice: 7.99, description: 'Disney streaming service' },
-  { id: 'xbox', name: 'Xbox Game Pass', icon: Gamepad2, color: 'bg-green-600', category: 'Gaming', averagePrice: 14.99, description: 'Gaming subscription' },
-  { id: 'dropbox', name: 'Dropbox', icon: Cloud, color: 'bg-blue-500', category: 'Cloud Storage', averagePrice: 9.99, description: 'Cloud file storage' },
-  { id: 'zapier', name: 'Zapier', icon: Zap, color: 'bg-orange-500', category: 'Productivity', averagePrice: 19.99, description: 'Automation platform' },
-  { id: 'mailchimp', name: 'Mailchimp', icon: Mail, color: 'bg-yellow-500', category: 'Marketing', averagePrice: 10.00, description: 'Email marketing' },
-  { id: 'shopify', name: 'Shopify', icon: ShoppingCart, color: 'bg-green-700', category: 'E-commerce', averagePrice: 29.00, description: 'E-commerce platform' },
-  { id: 'hulu', name: 'Hulu', icon: Play, color: 'bg-green-400', category: 'Entertainment', averagePrice: 5.99, description: 'TV and movie streaming' }
+  { id: 'netflix', name: 'Netflix', icon: Play, color: 'bg-red-500', category: 'Entertainment', averagePrice: 250000, description: 'Streaming movies and TV shows' },
+  { id: 'spotify', name: 'Spotify', icon: Music, color: 'bg-green-500', category: 'Music', averagePrice: 150000, description: 'Music streaming service' },
+  { id: 'adobe', name: 'Adobe Creative', icon: Camera, color: 'bg-red-600', category: 'Software', averagePrice: 850000, description: 'Creative design tools' },
+  { id: 'github', name: 'GitHub Pro', icon: Code, color: 'bg-gray-800', category: 'Development', averagePrice: 60000, description: 'Code repository hosting' },
+  { id: 'notion', name: 'Notion', icon: FileText, color: 'bg-gray-700', category: 'Productivity', averagePrice: 120000, description: 'All-in-one workspace' },
+  { id: 'disney', name: 'Disney+', icon: Play, color: 'bg-blue-600', category: 'Entertainment', averagePrice: 120000, description: 'Disney streaming service' },
+  { id: 'xbox', name: 'Xbox Game Pass', icon: Gamepad2, color: 'bg-green-600', category: 'Gaming', averagePrice: 230000, description: 'Gaming subscription' },
+  { id: 'dropbox', name: 'Dropbox', icon: Cloud, color: 'bg-blue-500', category: 'Cloud Storage', averagePrice: 150000, description: 'Cloud file storage' },
+  { id: 'zapier', name: 'Zapier', icon: Zap, color: 'bg-orange-500', category: 'Productivity', averagePrice: 320000, description: 'Automation platform' },
+  { id: 'mailchimp', name: 'Mailchimp', icon: Mail, color: 'bg-yellow-500', category: 'Marketing', averagePrice: 160000, description: 'Email marketing' },
+  { id: 'shopify', name: 'Shopify', icon: ShoppingCart, color: 'bg-green-700', category: 'E-commerce', averagePrice: 460000, description: 'E-commerce platform' },
+  { id: 'hulu', name: 'Hulu', icon: Play, color: 'bg-green-400', category: 'Entertainment', averagePrice: 95000, description: 'TV and movie streaming' }
 ];
 
 type DialogStep = 'select-service' | 'connect-account' | 'connecting' | 'confirm';
@@ -154,7 +154,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
                       <IconComponent className="h-6 w-6" />
                     </div>
                     <span className="font-medium text-sm text-center">{service.name}</span>
-                    <span className="text-xs text-muted-foreground mt-1">${service.averagePrice}/mo</span>
+                    <span className="text-xs text-muted-foreground mt-1">Rp{service.averagePrice.toLocaleString('id-ID')}/mo</span>
                   </button>
                 );
               })}
@@ -187,7 +187,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
               <div className="bg-muted/50 p-4 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <Badge variant="secondary">{selectedService.category}</Badge>
-                  <span className="text-sm text-muted-foreground">Average: ${selectedService.averagePrice}/month</span>
+                  <span className="text-sm text-muted-foreground">Average: Rp{selectedService.averagePrice.toLocaleString('id-ID')}/month</span>
                 </div>
                 <p className="text-sm text-muted-foreground">{selectedService.description}</p>
               </div>
@@ -302,7 +302,7 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
                   </div>
                   <div>
                     <span className="text-muted-foreground">Monthly Cost:</span>
-                    <p className="font-semibold text-lg">${connectedData.monthlyPrice}</p>
+                    <p className="font-semibold text-lg">Rp{connectedData.monthlyPrice.toLocaleString('id-ID')}</p>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Status:</span>

@@ -134,12 +134,12 @@ const EditSubscriptionDialog: React.FC<EditSubscriptionDialogProps> = ({
                     <FormLabel>Monthly Price</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">$</span>
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">Rp</span>
                         <Input 
-                          placeholder="15.99" 
+                          placeholder="250000" 
                           type="number" 
-                          step="0.01"
-                          className="pl-8"
+                          step="1000"
+                          className="pl-10"
                           {...field} 
                         />
                       </div>

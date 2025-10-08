@@ -6,20 +6,20 @@ interface InsightsChartProps {
 }
 
 const monthlyData = [
-  { month: "Jan", amount: 98.50 },
-  { month: "Feb", amount: 112.30 },
-  { month: "Mar", amount: 127.95 },
-  { month: "Apr", amount: 115.40 },
-  { month: "May", amount: 134.20 },
-  { month: "Jun", amount: 127.95 },
+  { month: "Jan", amount: 1500000 },
+  { month: "Feb", amount: 1800000 },
+  { month: "Mar", amount: 2000000 },
+  { month: "Apr", amount: 1850000 },
+  { month: "May", amount: 2150000 },
+  { month: "Jun", amount: 2000000 },
 ];
 
 const categoryData = [
-  { name: "Entertainment", value: 45.98, color: "hsl(var(--primary))" },
-  { name: "Software", value: 52.99, color: "hsl(var(--secondary))" },
-  { name: "Music", value: 9.99, color: "hsl(var(--accent))" },
-  { name: "Development", value: 4.00, color: "hsl(var(--muted))" },
-  { name: "Other", value: 14.99, color: "hsl(var(--destructive))" },
+  { name: "Entertainment", value: 750000, color: "hsl(var(--primary))" },
+  { name: "Software", value: 850000, color: "hsl(var(--secondary))" },
+  { name: "Music", value: 150000, color: "hsl(var(--accent))" },
+  { name: "Development", value: 60000, color: "hsl(var(--muted))" },
+  { name: "Other", value: 230000, color: "hsl(var(--destructive))" },
 ];
 
 const InsightsChart: React.FC<InsightsChartProps> = ({ type }) => {
@@ -37,10 +37,10 @@ const InsightsChart: React.FC<InsightsChartProps> = ({ type }) => {
             <YAxis 
               className="text-muted-foreground"
               fontSize={12}
-              tickFormatter={(value) => `$${value}`}
+              tickFormatter={(value) => `Rp${(value / 1000000).toFixed(1)}M`}
             />
             <Tooltip 
-              formatter={(value) => [`$${value}`, "Amount"]}
+              formatter={(value) => [`Rp${Number(value).toLocaleString('id-ID')}`, "Amount"]}
               labelStyle={{ color: "hsl(var(--foreground))" }}
               contentStyle={{ 
                 backgroundColor: "hsl(var(--card))",
@@ -78,7 +78,7 @@ const InsightsChart: React.FC<InsightsChartProps> = ({ type }) => {
             ))}
           </Pie>
           <Tooltip 
-            formatter={(value) => [`$${value}`, "Amount"]}
+            formatter={(value) => [`Rp${Number(value).toLocaleString('id-ID')}`, "Amount"]}
             contentStyle={{ 
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",

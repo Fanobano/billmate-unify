@@ -23,7 +23,7 @@ const mockSubscriptions: Subscription[] = [
     id: "1",
     name: "Netflix",
     logo: "🎬",
-    price: 15.99,
+    price: 250000,
     renewalDate: new Date(2024, 8, 15),
     category: "Entertainment",
     status: "active",
@@ -33,7 +33,7 @@ const mockSubscriptions: Subscription[] = [
     id: "2",
     name: "Spotify Premium",
     logo: "🎵",
-    price: 9.99,
+    price: 150000,
     renewalDate: new Date(2024, 8, 20),
     category: "Music",
     status: "active",
@@ -43,7 +43,7 @@ const mockSubscriptions: Subscription[] = [
     id: "3",
     name: "Adobe Creative Suite",
     logo: "🎨",
-    price: 52.99,
+    price: 850000,
     renewalDate: new Date(2024, 8, 28),
     category: "Software",
     status: "active",
@@ -53,7 +53,7 @@ const mockSubscriptions: Subscription[] = [
     id: "4",
     name: "GitHub Pro",
     logo: "💻",
-    price: 4.00,
+    price: 60000,
     renewalDate: new Date(2024, 9, 5),
     category: "Development",
     status: "active",
@@ -196,7 +196,7 @@ const SubscriptionList = () => {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-primary">
-                      ${sub.price}
+                      Rp{sub.price.toLocaleString('id-ID')}
                     </span>
                     {getStatusBadge(sub.status, daysUntil)}
                   </div>

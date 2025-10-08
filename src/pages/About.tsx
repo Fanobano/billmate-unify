@@ -108,7 +108,7 @@ const About = () => {
                 <div className="text-muted-foreground">Active Users</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">$2.5M+</div>
+                <div className="text-4xl font-bold text-primary mb-2">Rp40M+</div>
                 <div className="text-muted-foreground">Money Saved</div>
               </div>
               <div className="text-center">

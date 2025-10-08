@@ -103,7 +103,7 @@ const Dashboard = () => {
                   <CardDescription>This month's total</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold gradient-text mb-2">$127.95</div>
+                  <div className="text-4xl font-bold gradient-text mb-2">Rp2.000.000</div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm success-gradient text-white px-2 py-1 rounded-full">+5%</span>
                     <span className="text-sm text-muted-foreground">from last month</span>
@@ -134,7 +134,7 @@ const Dashboard = () => {
                   <div className="text-2xl font-semibold gradient-text mb-1">Netflix</div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm secondary-gradient text-white px-2 py-1 rounded-full">3 days</span>
-                    <span className="text-sm font-semibold">$15.99</span>
+                    <span className="text-sm font-semibold">Rp250.000</span>
                   </div>
                 </CardContent>
               </Card>
