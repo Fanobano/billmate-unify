@@ -8,7 +8,7 @@ const Pricing = () => {
   const plans = [
     {
       name: "Free Plan",
-      price: "$0",
+      price: "Rp.0",
       period: "/month",
       description: "Perfect for getting started with basic subscription tracking",
       features: [
@@ -23,7 +23,7 @@ const Pricing = () => {
     },
     {
       name: "Pro Plan",
-      price: "$9.99",
+      price: "Rp.12.500",
       period: "/month",
       description: "Everything you need for complete subscription management",
       features: [
@@ -36,24 +36,6 @@ const Pricing = () => {
         "Export data & reports"
       ],
       popular: true,
-      buttonText: "Start Free Trial"
-    },
-    {
-      name: "Family Plan",
-      price: "$19.99",
-      period: "/month",
-      description: "Manage subscriptions for the whole family with shared insights",
-      features: [
-        "Everything in Pro Plan",
-        "Up to 6 family members",
-        "Shared family dashboard",
-        "Individual spending limits",
-        "Family notification settings",
-        "Bulk subscription management",
-        "Family spending insights",
-        "Admin controls & permissions"
-      ],
-      popular: false,
       buttonText: "Start Free Trial"
     }
   ];
@@ -76,7 +58,7 @@ const Pricing = () => {
             </div>
 
             {/* Pricing Cards */}
-            <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {plans.map((plan, index) => (
                 <Card 
                   key={index} 
@@ -124,19 +106,6 @@ const Pricing = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-
-            {/* Bottom Section */}
-            <div className="text-center mt-16">
-              <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 max-w-4xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Need a custom solution?</h3>
-                <p className="text-muted-foreground mb-6">
-                  Contact our sales team for enterprise pricing and custom features tailored to your organization.
-                </p>
-                <Button variant="outline" className="border-2 border-primary text-primary font-semibold px-8 py-3 rounded-xl transition-smooth hover:bg-primary hover:text-white">
-                  Contact Sales
-                </Button>
-              </div>
             </div>
           </div>
         </section>
