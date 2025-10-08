@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -22,20 +22,6 @@ const Contact = () => {
       description: "Speak directly with our customer service team",
       contact: "1-800-BILLMATE",
       available: "Mon-Fri, 9AM-6PM EST"
-    },
-    {
-      icon: MapPin,
-      title: "Office Location",
-      description: "Visit us at our headquarters",
-      contact: "123 Tech Street, San Francisco, CA 94105",
-      available: "By appointment only"
-    },
-    {
-      icon: Clock,
-      title: "Response Time",
-      description: "We typically respond within",
-      contact: "2-4 hours",
-      available: "During business hours"
     }
   ];
 
