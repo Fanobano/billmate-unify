@@ -44,21 +44,21 @@ const Pricing = () => {
     <div className="min-h-screen">
       <Header />
       
-      <main className="pt-24">
-        <section className="py-20">
-          <div className="container mx-auto px-6">
+      <main className="pt-20 sm:pt-24">
+        <section className="py-12 sm:py-16 lg:py-20">
+          <div className="container mx-auto px-4 sm:px-6">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-16">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+            <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
                 Simple, <span className="gradient-text">Transparent Pricing</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed px-4">
                 Choose the perfect plan for your subscription management needs. All plans include a 14-day free trial.
               </p>
             </div>
 
             {/* Pricing Cards */}
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
               {plans.map((plan, index) => (
                 <Card 
                   key={index} 
