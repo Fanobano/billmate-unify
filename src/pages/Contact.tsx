@@ -29,20 +29,20 @@ const Contact = () => {
     <div className="min-h-screen">
       <Header />
       
-      <main className="pt-20 sm:pt-24">
-        <section className="py-12 sm:py-16 lg:py-20">
-          <div className="container mx-auto px-4 sm:px-6">
+      <main className="pt-24">
+        <section className="py-20">
+          <div className="container mx-auto px-6">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            <div className="text-center max-w-4xl mx-auto mb-16">
+              <h1 className="text-4xl lg:text-5xl font-bold mb-6">
                 Get in <span className="gradient-text">Touch</span>
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed px-4">
+              <p className="text-xl text-muted-foreground leading-relaxed">
                 Have questions about BillMate? Our friendly customer service team is here to help you manage your subscriptions better.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
               <Card className="card-hover-shadow">
                 <CardHeader>

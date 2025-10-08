@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
     <footer className="bg-muted/30 border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 primary-gradient rounded-lg flex items-center justify-center">
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-border mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
           <p>&copy; 2025 BillMate. All rights reserved.</p>
         </div>
       </div>
