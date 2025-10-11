@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const isActive = (path: string) => location.pathname === path;
 
@@ -63,15 +66,85 @@ const Header = () => {
           </nav>
           
           {/* Button section - takes up right space */}
-          <div className="flex items-center gap-4 flex-1 justify-end">
-            <Button variant="outline" className="border-2 border-primary text-primary font-semibold px-6 rounded-xl transition-smooth hover:card-hover-shadow" asChild>
+          <div className="flex items-center gap-2 sm:gap-4 flex-1 justify-end">
+            <Button variant="outline" className="hidden sm:flex border-2 border-primary text-primary font-semibold px-4 sm:px-6 rounded-xl transition-smooth hover:card-hover-shadow" asChild>
               <a href="/signin">Sign In</a>
             </Button>
-            <Button className="primary-gradient text-white font-semibold px-6 rounded-lg transition-smooth hover:scale-105" asChild>
+            <Button className="hidden sm:flex primary-gradient text-white font-semibold px-4 sm:px-6 rounded-lg transition-smooth hover:scale-105" asChild>
               <a href="/signup">Get Started</a>
             </Button>
+            
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-background">
+            <nav className="flex flex-col py-4 px-6 gap-4">
+              <a 
+                href="/features" 
+                className={`py-2 transition-smooth ${
+                  isActive('/features') 
+                    ? 'text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary'
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <a 
+                href="/pricing" 
+                className={`py-2 transition-smooth ${
+                  isActive('/pricing') 
+                    ? 'text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary'
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pricing
+              </a>
+              <a 
+                href="/about" 
+                className={`py-2 transition-smooth ${
+                  isActive('/about') 
+                    ? 'text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary'
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <a 
+                href="/contact" 
+                className={`py-2 transition-smooth ${
+                  isActive('/contact') 
+                    ? 'text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary'
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </a>
+              
+              <div className="flex flex-col gap-3 pt-4 border-t border-border">
+                <Button variant="outline" className="border-2 border-primary text-primary font-semibold rounded-xl w-full" asChild>
+                  <a href="/signin">Sign In</a>
+                </Button>
+                <Button className="primary-gradient text-white font-semibold rounded-lg w-full" asChild>
+                  <a href="/signup">Get Started</a>
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
