@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-dashboard.jpg";
+import heroImage from "@/assets/app-logos.jpeg";
 
 const Hero = () => {
   return (
@@ -33,7 +33,7 @@ const Hero = () => {
             <div className="relative z-10">
               <img 
                 src={heroImage} 
-                alt="BillMate Dashboard Preview" 
+                alt="Popular subscription app logos including Netflix, Spotify, and more" 
                 className="rounded-xl sm:rounded-2xl shadow-2xl transition-smooth hover:scale-105 w-full"
               />
             </div>
