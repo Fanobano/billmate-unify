@@ -29,16 +29,6 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative mt-8 lg:mt-0">
-            <div className="relative z-10">
-              <img 
-                src={heroImage} 
-                alt="Popular subscription app logos including Netflix, Spotify, and more" 
-                className="rounded-xl sm:rounded-2xl shadow-2xl transition-smooth hover:scale-105 w-full"
-              />
-            </div>
-            <div className="absolute -inset-2 sm:-inset-4 primary-gradient rounded-xl sm:rounded-2xl opacity-20 blur-xl"></div>
-          </div>
         </div>
       </div>
     </section>
