@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Calendar as CalendarIcon, BarChart3, Settings } from "lucide-react";
+import { Plus, Calendar as CalendarIcon, BarChart3, Settings, ArrowLeft } from "lucide-react";
 import SubscriptionList from "@/components/dashboard/SubscriptionList";
 import AddSubscriptionDialog from "@/components/dashboard/AddSubscriptionDialog";
 import InsightsChart from "@/components/dashboard/InsightsChart";
@@ -18,9 +18,19 @@ const Dashboard = () => {
       <header className="border-b card-gradient-bg backdrop-blur-sm border-white/20 shadow-lg">
         <div className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <h1 className="text-4xl font-bold gradient-text">BillMate</h1>
-              <p className="text-muted-foreground">Manage your subscriptions effortlessly</p>
+            <div className="flex items-center gap-4">
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="hover:scale-110 transition-transform"
+                onClick={() => window.location.href = '/'}
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+              <div className="space-y-1">
+                <h1 className="text-4xl font-bold gradient-text">BillMate</h1>
+                <p className="text-muted-foreground">Manage your subscriptions effortlessly</p>
+              </div>
             </div>
             <Button 
               onClick={() => setIsAddDialogOpen(true)} 
