@@ -22,21 +22,10 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="primary-gradient text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl transition-smooth hover:scale-105 w-full sm:w-auto max-w-xs"
-                onClick={() => window.location.href = '/dashboard'}
+                onClick={() => window.location.href = '/signin'}
               >
-                Start Free Trial
+                Get Started
               </Button>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                No credit card required
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                14-day free trial
-              </div>
             </div>
           </div>
           

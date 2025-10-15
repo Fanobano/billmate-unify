@@ -79,9 +79,6 @@ const Features = () => {
                 <p className="text-muted-foreground mb-6">
                   Join thousands of users who have simplified their subscription management.
                 </p>
-                <button className="primary-gradient text-white font-semibold px-8 py-3 rounded-xl transition-smooth hover:scale-105">
-                  Start Free Trial
-                </button>
               </div>
             </div>
           </div>

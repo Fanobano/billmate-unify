@@ -7,11 +7,9 @@ import AddSubscriptionDialog from "@/components/dashboard/AddSubscriptionDialog"
 import InsightsChart from "@/components/dashboard/InsightsChart";
 import SubscriptionCalendar from "@/components/dashboard/SubscriptionCalendar";
 import ReminderSettings from "@/components/dashboard/ReminderSettings";
-import FreeTrialBanner from "@/components/dashboard/FreeTrialBanner";
 
 const Dashboard = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-  const [showTrialBanner, setShowTrialBanner] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
   
   return (
@@ -34,13 +32,6 @@ const Dashboard = () => {
           </div>
         </div>
       </header>
-
-      {/* Free Trial Banner */}
-      {showTrialBanner && (
-        <div className="container mx-auto px-6 pt-4">
-          <FreeTrialBanner onDismiss={() => setShowTrialBanner(false)} />
-        </div>
-      )}
 
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">

@@ -36,7 +36,7 @@ const Pricing = () => {
         "Export data & reports"
       ],
       popular: true,
-      buttonText: "Start Free Trial"
+      buttonText: "Get Started"
     }
   ];
 
@@ -53,7 +53,7 @@ const Pricing = () => {
                 Simple, <span className="gradient-text">Transparent Pricing</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Choose the perfect plan for your subscription management needs. All plans include a 14-day free trial.
+                Choose the perfect plan for your subscription management needs.
               </p>
             </div>
 

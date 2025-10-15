@@ -76,7 +76,10 @@ const SignIn = () => {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-6 px-8 pb-8">
-            <Button className="w-full h-12 rounded-xl primary-gradient text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+            <Button 
+              className="w-full h-12 rounded-xl primary-gradient text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+              onClick={() => window.location.href = '/dashboard'}
+            >
               Sign In to Your Account
             </Button>
             <p className="text-center text-sm text-muted-foreground">
