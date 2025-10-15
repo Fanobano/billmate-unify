@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CreditCard, Bell, Settings } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -79,6 +80,13 @@ const Features = () => {
                 <p className="text-muted-foreground mb-6">
                   Join thousands of users who have simplified their subscription management.
                 </p>
+                <Button 
+                  size="lg" 
+                  className="primary-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl transition-smooth hover:scale-105"
+                  onClick={() => window.location.href = '/signin'}
+                >
+                  Get Started
+                </Button>
               </div>
             </div>
           </div>

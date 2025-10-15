@@ -12,10 +12,10 @@ const Pricing = () => {
       period: "/month",
       description: "Perfect for getting started with basic subscription tracking",
       features: [
-        "Track up to 5 subscriptions",
-        "Basic billing reminders",
-        "Monthly spending overview",
-        "Email notifications",
+        "Track up to 2 subscriptions",
+        "Ad-supported experience",
+        "Basic notifications (one-time alerts)",
+        "Essential subscription management",
         "Mobile app access"
       ],
       popular: false,
@@ -28,12 +28,12 @@ const Pricing = () => {
       description: "Everything you need for complete subscription management",
       features: [
         "Unlimited subscription tracking",
-        "Smart billing reminders",
-        "Advanced analytics & insights",
-        "Price change notifications",
-        "Subscription recommendations",
+        "Ad-free experience",
+        "Advanced analytics & monthly spending insights",
+        "Interactive subscription calendar",
+        "Smart reminders with 'remind me later' feature",
         "Priority customer support",
-        "Export data & reports"
+        "Price change alerts & notifications"
       ],
       popular: true,
       buttonText: "Get Started"

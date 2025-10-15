@@ -8,22 +8,22 @@ const About = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To empower individuals and families to take complete control of their subscription spending and eliminate financial surprises."
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       icon: Users,
       title: "Customer First",
-      description: "Every feature we build is designed with our users' needs in mind, ensuring a seamless and intuitive experience."
+      description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       icon: Shield,
       title: "Privacy & Security",
-      description: "Your financial data is protected with bank-level security. We never share your information with third parties."
+      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     },
     {
       icon: Zap,
       title: "Innovation",
-      description: "We continuously evolve our platform with cutting-edge features to stay ahead of the subscription economy."
+      description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
   ];
 
@@ -40,7 +40,7 @@ const About = () => {
                 About <span className="gradient-text">BillMate</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We're on a mission to help people regain control over their subscription spending and eliminate the stress of managing multiple recurring payments.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
           </div>
@@ -53,13 +53,13 @@ const About = () => {
               <h2 className="text-3xl font-bold text-center mb-12">Our Story</h2>
               <div className="prose prose-lg max-w-none text-muted-foreground">
                 <p className="text-lg leading-relaxed mb-6">
-                  BillMate was born from a simple frustration: the growing complexity of managing multiple subscription services. In today's digital world, the average person has over 12 active subscriptions, from streaming services to software tools, fitness apps to meal delivery services.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
                 <p className="text-lg leading-relaxed mb-6">
-                  What started as a personal project to track our own subscriptions quickly evolved into a comprehensive platform when we realized millions of people shared the same struggles. Forgotten subscriptions, unexpected price increases, and the difficulty of canceling services were universal pain points.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  Today, BillMate serves thousands of users worldwide, helping them save money, reduce stress, and take control of their digital spending. We're proud to be the trusted partner in your journey toward better financial management.
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
                 </p>
               </div>
             </div>
@@ -72,7 +72,7 @@ const About = () => {
             <div className="text-center max-w-4xl mx-auto mb-16">
               <h2 className="text-3xl font-bold mb-6">What Drives Us</h2>
               <p className="text-xl text-muted-foreground">
-                Our core values guide everything we do at BillMate.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
 
@@ -98,7 +98,7 @@ const About = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">BillMate by the Numbers</h2>
               <p className="text-xl text-muted-foreground">
-                See the impact we're making in the subscription management space.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
 
@@ -129,18 +129,8 @@ const About = () => {
             <div className="text-center max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Built by a Passionate Team</h2>
               <p className="text-xl text-muted-foreground mb-12">
-                Our diverse team of engineers, designers, and financial experts work tirelessly to make BillMate the best subscription management platform available.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              
-              <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4">Want to join our mission?</h3>
-                <p className="text-muted-foreground mb-6">
-                  We're always looking for talented individuals who share our passion for helping people manage their finances better.
-                </p>
-                <button className="primary-gradient text-white font-semibold px-8 py-3 rounded-xl transition-smooth hover:scale-105">
-                  View Open Positions
-                </button>
-              </div>
             </div>
           </div>
         </section>
