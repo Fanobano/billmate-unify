@@ -15,8 +15,7 @@ const Pricing = () => {
         "Track up to 2 subscriptions",
         "Ad-supported experience",
         "Basic notifications (one-time alerts)",
-        "Essential subscription management",
-        "Mobile app access"
+        "Essential subscription management"
       ],
       popular: false,
       buttonText: "Get Started Free"

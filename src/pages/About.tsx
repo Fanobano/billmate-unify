@@ -92,48 +92,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-gradient-to-r from-primary/5 to-primary/10">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">BillMate by the Numbers</h2>
-              <p className="text-xl text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">50,000+</div>
-                <div className="text-muted-foreground">Active Users</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">Rp40M+</div>
-                <div className="text-muted-foreground">Money Saved</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">500K+</div>
-                <div className="text-muted-foreground">Subscriptions Tracked</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">98%</div>
-                <div className="text-muted-foreground">Customer Satisfaction</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Team Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Built by a Passionate Team</h2>
-              <p className="text-xl text-muted-foreground mb-12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

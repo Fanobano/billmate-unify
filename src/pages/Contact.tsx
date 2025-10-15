@@ -1,13 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const Contact = () => {
+  const [message, setMessage] = useState("");
+  
+  const questionTemplates = [
+    "How do I upgrade to Pro plan?",
+    "Can I cancel my subscription anytime?",
+    "How do subscription reminders work?"
+  ];
+
   const contactInfo = [
     {
       icon: Mail,
@@ -43,66 +50,63 @@ const Contact = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Contact Form */}
-              <Card className="card-hover-shadow">
+              {/* Chat Interface */}
+              <Card className="card-hover-shadow flex flex-col">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Send us a message</CardTitle>
+                  <CardTitle className="text-2xl">Chat with Support</CardTitle>
                   <p className="text-muted-foreground">
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    Send us a message and we'll respond as soon as possible.
                   </p>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input 
-                        id="firstName" 
-                        placeholder="Enter your first name"
-                        className="rounded-xl"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input 
-                        id="lastName" 
-                        placeholder="Enter your last name"
-                        className="rounded-xl"
-                      />
+                <CardContent className="flex-1 flex flex-col space-y-4">
+                  {/* Question Templates */}
+                  <div className="space-y-3">
+                    <p className="text-sm font-medium text-muted-foreground">Quick questions:</p>
+                    <div className="flex flex-col gap-2">
+                      {questionTemplates.map((question, index) => (
+                        <Button
+                          key={index}
+                          variant="outline"
+                          className="justify-start text-left h-auto py-3 px-4 rounded-xl hover:bg-primary/10 hover:border-primary transition-smooth"
+                          onClick={() => setMessage(question)}
+                        >
+                          {question}
+                        </Button>
+                      ))}
                     </div>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="Enter your email address"
-                      className="rounded-xl"
-                    />
+
+                  {/* Chat Messages Area */}
+                  <div className="flex-1 min-h-[200px] bg-muted/30 rounded-xl p-4 border">
+                    <p className="text-sm text-muted-foreground text-center">
+                      Start a conversation with our support team
+                    </p>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input 
-                      id="subject" 
-                      placeholder="What's this about?"
-                      className="rounded-xl"
+
+                  {/* Message Input */}
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Type your message..."
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="rounded-xl flex-1"
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          // Handle send message
+                          setMessage("");
+                        }
+                      }}
                     />
+                    <Button 
+                      className="primary-gradient text-white rounded-xl px-6 transition-smooth hover:scale-105"
+                      onClick={() => {
+                        // Handle send message
+                        setMessage("");
+                      }}
+                    >
+                      <Send className="w-5 h-5" />
+                    </Button>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us how we can help you..."
-                      rows={5}
-                      className="rounded-xl"
-                    />
-                  </div>
-                  
-                  <Button className="w-full primary-gradient text-white font-semibold py-6 text-lg rounded-xl transition-smooth hover:scale-105">
-                    Send Message
-                  </Button>
                   
                   <div className="text-center text-sm text-muted-foreground">
                     We typically respond within 2-4 hours during business hours

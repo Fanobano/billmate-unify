@@ -22,7 +22,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="primary-gradient text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl transition-smooth hover:scale-105 w-full sm:w-auto max-w-xs"
-                onClick={() => window.location.href = '/signin'}
+                onClick={() => window.location.href = '/signup'}
               >
                 Get Started
               </Button>
