@@ -5,8 +5,8 @@ const Hero = () => {
   return (
     <section className="hero-bg min-h-screen flex items-center pt-20 md:pt-0">
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="space-y-6 sm:space-y-8 text-center">
+        <div className="flex justify-center items-center">
+          <div className="space-y-6 sm:space-y-8 text-center max-w-4xl">
             <div className="space-y-3 sm:space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <div>One dashboard.</div>
