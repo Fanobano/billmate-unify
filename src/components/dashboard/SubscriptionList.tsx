@@ -6,63 +6,19 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { MoreVertical, Trash2, Edit, ExternalLink, Bell } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import EditSubscriptionDialog from "./EditSubscriptionDialog";
+import { Subscription } from "@/hooks/useSubscriptions";
 
-interface Subscription {
-  id: string;
-  name: string;
-  logo: string;
-  price: number;
-  renewalDate: Date;
-  category: string;
-  status: "active" | "cancelled" | "paused";
-  reminderDays?: number;
+interface SubscriptionListProps {
+  subscriptions: Subscription[];
+  onUpdate: (subscription: Subscription) => void;
+  onDelete: (id: string) => void;
 }
 
-const mockSubscriptions: Subscription[] = [
-  {
-    id: "1",
-    name: "Netflix",
-    logo: "🎬",
-    price: 250000,
-    renewalDate: new Date(2024, 8, 15),
-    category: "Entertainment",
-    status: "active",
-    reminderDays: 3
-  },
-  {
-    id: "2",
-    name: "Spotify Premium",
-    logo: "🎵",
-    price: 150000,
-    renewalDate: new Date(2024, 8, 20),
-    category: "Music",
-    status: "active",
-    reminderDays: 7
-  },
-  {
-    id: "3",
-    name: "Adobe Creative Suite",
-    logo: "🎨",
-    price: 850000,
-    renewalDate: new Date(2024, 8, 28),
-    category: "Software",
-    status: "active",
-    reminderDays: 14
-  },
-  {
-    id: "4",
-    name: "GitHub Pro",
-    logo: "💻",
-    price: 60000,
-    renewalDate: new Date(2024, 9, 5),
-    category: "Development",
-    status: "active",
-    reminderDays: 1
-  }
-];
-
-const SubscriptionList = () => {
-  const [subscriptions, setSubscriptions] = useState(mockSubscriptions);
+const SubscriptionList: React.FC<SubscriptionListProps> = ({ 
+  subscriptions,
+  onUpdate,
+  onDelete
+}) => {
   const [editingSubscription, setEditingSubscription] = useState<Subscription | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
@@ -91,7 +47,7 @@ const SubscriptionList = () => {
   };
 
   const handleCancelSubscription = (id: string) => {
-    setSubscriptions(subs => subs.filter(sub => sub.id !== id));
+    onDelete(id);
   };
 
   const handleEditSubscription = (subscription: Subscription) => {
@@ -100,11 +56,7 @@ const SubscriptionList = () => {
   };
 
   const handleUpdateSubscription = (updatedSubscription: Subscription) => {
-    setSubscriptions(subs => 
-      subs.map(sub => 
-        sub.id === updatedSubscription.id ? updatedSubscription : sub
-      )
-    );
+    onUpdate(updatedSubscription);
   };
 
   const getReminderText = (reminderDays?: number) => {

@@ -7,10 +7,14 @@ import AddSubscriptionDialog from "@/components/dashboard/AddSubscriptionDialog"
 import InsightsChart from "@/components/dashboard/InsightsChart";
 import SubscriptionCalendar from "@/components/dashboard/SubscriptionCalendar";
 import ReminderSettings from "@/components/dashboard/ReminderSettings";
+import { useSubscriptions } from "@/hooks/useSubscriptions";
 
 const Dashboard = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
+  const { subscriptions, addSubscription, updateSubscription, deleteSubscription, calculateStats } = useSubscriptions();
+  
+  const stats = calculateStats();
   
   return (
     <div className="min-h-screen dashboard-bg">
@@ -104,10 +108,11 @@ const Dashboard = () => {
                   <CardDescription>This month's total</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold gradient-text mb-2">Rp2.000.000</div>
+                  <div className="text-4xl font-bold gradient-text mb-2">
+                    Rp{stats.monthlyTotal.toLocaleString('id-ID')}
+                  </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm success-gradient text-white px-2 py-1 rounded-full">+5%</span>
-                    <span className="text-sm text-muted-foreground">from last month</span>
+                    <span className="text-sm text-muted-foreground">based on active subscriptions</span>
                   </div>
                 </CardContent>
               </Card>
@@ -118,10 +123,19 @@ const Dashboard = () => {
                   <CardDescription>Currently active</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold gradient-text mb-2">8</div>
+                  <div className="text-4xl font-bold gradient-text mb-2">{stats.activeCount}</div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm warning-gradient text-white px-2 py-1 rounded-full">2 due soon</span>
-                    <span className="text-sm text-muted-foreground">this week</span>
+                    {stats.dueSoonCount > 0 && (
+                      <>
+                        <span className="text-sm warning-gradient text-white px-2 py-1 rounded-full">
+                          {stats.dueSoonCount} due soon
+                        </span>
+                        <span className="text-sm text-muted-foreground">this week</span>
+                      </>
+                    )}
+                    {stats.dueSoonCount === 0 && (
+                      <span className="text-sm text-muted-foreground">all up to date</span>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -132,16 +146,32 @@ const Dashboard = () => {
                   <CardDescription>Upcoming renewal</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-semibold gradient-text mb-1">Netflix</div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm secondary-gradient text-white px-2 py-1 rounded-full">3 days</span>
-                    <span className="text-sm font-semibold">Rp250.000</span>
-                  </div>
+                  {stats.nextPayment ? (
+                    <>
+                      <div className="text-2xl font-semibold gradient-text mb-1">
+                        {stats.nextPayment.name}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm secondary-gradient text-white px-2 py-1 rounded-full">
+                          {Math.ceil((stats.nextPayment.renewalDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days
+                        </span>
+                        <span className="text-sm font-semibold">
+                          Rp{stats.nextPayment.price.toLocaleString('id-ID')}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-muted-foreground">No upcoming payments</div>
+                  )}
                 </CardContent>
               </Card>
             </div>
             
-            <SubscriptionList />
+            <SubscriptionList 
+              subscriptions={subscriptions}
+              onUpdate={updateSubscription}
+              onDelete={deleteSubscription}
+            />
           </div>
         )}
 
@@ -196,7 +226,8 @@ const Dashboard = () => {
 
       <AddSubscriptionDialog 
         open={isAddDialogOpen} 
-        onOpenChange={setIsAddDialogOpen} 
+        onOpenChange={setIsAddDialogOpen}
+        onAdd={addSubscription}
       />
     </div>
   );

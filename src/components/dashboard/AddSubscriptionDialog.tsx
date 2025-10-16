@@ -13,11 +13,63 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Subscription } from "@/hooks/useSubscriptions";
 
 interface AddSubscriptionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onAdd: (subscription: Omit<Subscription, 'id'>) => Subscription;
 }
+
+// Emoji map for services
+const serviceEmojiMap: Record<string, string> = {
+  "Netflix": "🎬",
+  "Spotify": "🎵",
+  "Adobe Creative Cloud": "🎨",
+  "GitHub Pro": "💻",
+  "Notion": "📝",
+  "Disney+": "🏰",
+  "Xbox Game Pass": "🎮",
+  "Dropbox": "📦",
+  "Zapier": "⚡",
+  "Mailchimp": "📧",
+  "Shopify": "🛒",
+  "Hulu": "📺",
+  "Amazon Prime": "📦",
+  "YouTube Premium": "▶️",
+  "LinkedIn Premium": "💼",
+  "Canva Pro": "🎨",
+  "Microsoft 365": "📊",
+  "Google Workspace": "📧",
+  "Slack": "💬",
+  "Zoom": "📹",
+  "Other": "📱"
+};
+
+// Category map for services
+const serviceCategoryMap: Record<string, string> = {
+  "Netflix": "Entertainment",
+  "Spotify": "Music",
+  "Adobe Creative Cloud": "Software",
+  "GitHub Pro": "Development",
+  "Notion": "Productivity",
+  "Disney+": "Entertainment",
+  "Xbox Game Pass": "Gaming",
+  "Dropbox": "Storage",
+  "Zapier": "Automation",
+  "Mailchimp": "Marketing",
+  "Shopify": "E-commerce",
+  "Hulu": "Entertainment",
+  "Amazon Prime": "Shopping",
+  "YouTube Premium": "Entertainment",
+  "LinkedIn Premium": "Professional",
+  "Canva Pro": "Design",
+  "Microsoft 365": "Productivity",
+  "Google Workspace": "Productivity",
+  "Slack": "Communication",
+  "Zoom": "Communication",
+  "Other": "Other"
+};
 
 const subscriptionServices = [
   "Netflix",
@@ -62,7 +114,8 @@ const formSchema = z.object({
 
 const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({ 
   open, 
-  onOpenChange 
+  onOpenChange,
+  onAdd
 }) => {
   const { toast } = useToast();
   
@@ -77,8 +130,19 @@ const AddSubscriptionDialog: React.FC<AddSubscriptionDialogProps> = ({
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    // Convert price to number for display
     const priceNum = parseFloat(data.monthlyPrice.replace(/[^0-9.-]+/g, ""));
+    
+    const newSubscription = {
+      name: data.serviceName,
+      logo: serviceEmojiMap[data.serviceName] || "📱",
+      price: priceNum,
+      renewalDate: data.nextBillingDate,
+      category: serviceCategoryMap[data.serviceName] || "Other",
+      status: "active" as const,
+      reminderDays: parseInt(data.reminderTiming)
+    };
+    
+    onAdd(newSubscription);
     
     toast({
       title: "Subscription Added Successfully!",
